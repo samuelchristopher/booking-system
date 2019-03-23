@@ -25,7 +25,9 @@ let config = {
 
 firebase.initializeApp(config)
 
-
+let filesCount = (dirname) => {
+  fs.readdir(dirname, (err, filenames) => filenames.length)
+}
 const readFiles = (dirname, onFileContent, onError) => {
   fs.readdir(dirname, function (err, filenames) {
     if (err) {
@@ -43,9 +45,8 @@ const readFiles = (dirname, onFileContent, onError) => {
     });
   });
 }
-
+let tourPathChildren = []
 readFiles('content/tours/', function (filename, content) {
-  console.log(filename)
   unified()
     .use(parse)
     .use(stringify)
@@ -55,64 +56,109 @@ readFiles('content/tours/', function (filename, content) {
         return console.error(report(err))
       }
       let { data: tourData } = matter(String(file))
+      tourPathChildren.push({
+        path: `${tourData.path}`,
+        component: `src/templates/tourTemplate`,
+        getData: () => ({ tourData })
+      })
+      console.log(tourPathChildren)
       return firebase.database().ref(`${tourData.path}`).set({
         ...tourData
       });
-      
     })
 }, function (err) {
   throw err;
-});
+})
 
 
 
-export default {
-  getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    return [
-      {
-        path: '/',
-        component: 'src/containers/Home',
-      },
-      {
-        path: '/about',
-        component: 'src/containers/About',
-      },
-      {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getData: () => ({
-          posts,
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
-      },
-      {
-        is404: true,
-        component: 'src/containers/404',
-      },
-    ]
-  },
-  Document: class CustomHtml extends React.Component {
-    render () {
-      const { Html, Head, Body, children, renderMeta } = this.props
+// firebase.database().ref('tour/').on('value', snap => {
+//   let toursFromFirebase = snap.val()
+//   tourSinglePages = Object.keys(toursFromFirebase).map(tourSingleKey => {
+//     let currentTourPageContent = toursFromFirebase[tourSingleKey]
+//     return ({
+//       path: `${currentTourPageContent.path}`,
+//       component: 'src/templates/tourTemplate'
+//     })
+//   })
+// })
 
-      return (
-        <Html>
-          <Head>
-            <meta charSet="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            {renderMeta.styleTags}
-            <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-          </Head>
-          <Body>{children}</Body>
-        </Html>
-      )
-    }
-  },
+
+  // children: posts.map(post => ({
+  //   path: `/post/${post.id}`,
+  //   component: 'src/containers/Post',
+  //   getData: () => ({
+  //     post,
+  //   }),
+  // })),
+let obj = {}
+do {
+  obj = {
+    getRoutes: async () => {
+      // const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+      // const tours = {}
+      // firebase.database().ref('/tour').once('value').then(function (snapshot) {
+      //   tours = await snapshot.val()
+      // })
+      return [
+        {
+          path: '/',
+          component: 'src/containers/Home',
+        },
+        {
+          path: '/about',
+          component: 'src/containers/About',
+        },
+        // {
+        //   path: '/blog',
+        //   component: 'src/containers/Blog',
+        //   getData: () => ({
+        //     posts,
+        //   }),
+        //   children: posts.map(post => ({
+        //     path: `/post/${post.id}`,
+        //     component: 'src/containers/Post',
+        //     getData: () => ({
+        //       post,
+        //     }),
+        //   })),
+        // },
+        {
+          path: '/tours',
+          component: 'src/containers/allTours',
+        },
+        {
+          path: '/tour',
+          component: 'src/templates/tourTemplate',
+          children: tourPathChildren
+        },
+        {
+          is404: true,
+          component: 'src/containers/404',
+        },
+      ]
+    },
+    Document: class CustomHtml extends React.Component {
+      render () {
+        const { Html, Head, Body, children, renderMeta } = this.props
+
+        return (
+          <Html>
+            <Head>
+              <meta charSet="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              {renderMeta.styleTags}
+              <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
+            </Head>
+            <Body>{children}</Body>
+          </Html>
+        )
+      }
+    },
+  }
+
 }
+
+while (tourPathChildren.length < filesCount('./content/tours'))
+
+export default obj

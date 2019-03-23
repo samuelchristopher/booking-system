@@ -1,0 +1,336 @@
+.details__big-image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 240px;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+.details__highlights-container {
+  margin-top: 290px;
+}
+
+.details-tagline {
+  margin-bottom: 20px;
+}
+
+.details__dots-container {
+  margin-top: 300px;
+  margin-bottom: 30px;
+}
+
+.dots__titles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.dot {
+  background-color: #2A4F9F;
+  height: 16px;
+  width: 16px;
+  border-radius: 60%;
+}
+
+.dots__actual-dots-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  margin: 10px auto;
+}
+
+.line {
+  position: absolute;
+  height: 1px;
+  width: 197px;
+  margin-top: 5px;
+  border: dotted rgba(0, 0, 0, 0.2);
+  border-width: 0.3em 0 0;
+  z-index: -1;
+}
+
+.dots__info {
+  text-transform: capitalize;
+  color: #707070;
+  font-size: .8em;
+  max-width: 120px;
+  text-align: center;
+}
+
+.dots__info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.highlights__image {
+  width: 131px;
+  height: 
+  103px;
+  margin-left: 172px;
+}
+
+.details__heading {
+  color: #2A4F9F;
+  text-transform: capitalize;
+}
+
+.highlights-heading {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.highlights__p {
+  font-size: .8em;
+  color: #707070;
+  text-align: justify;
+}
+
+.highlights__info-content {
+  color: #707070;
+  font-size: .8em;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.highlights__info-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 220px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.highlights__info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 220px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  /* margin-left: 25px; */
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.highlights__info-title {
+  margin-bottom: 15px;
+}
+
+.itinerary__heading {
+  text-align: left;
+}
+
+.itinerary__image {
+  width: 131px;
+  height: 103px;
+  margin-left: 40px;
+  margin-bottom: -60px;
+  margin-top: 25px;
+}
+
+.itinerary__download {
+  background-color: #FBB514;
+  border-radius: 4px;
+  color: white;
+  font-size: .8em;
+  padding: 3px 5px;
+  text-decoration: none;
+}
+
+.itinerary__heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details__itinerary-container {
+  position: relative;
+  margin-top: 300px;
+}
+
+.itinerary__list-container {
+  margin-top: 15px;
+}
+
+.included__heading, .not-included__heading {
+  margin-top: 40px;
+}
+
+.details__image-grid {
+  margin-top: 45px;
+  position: relative;
+}
+
+.image-grid__one {
+  margin-top: 15px;
+  height: 156px;
+  width: 234px;
+  position: absolute;
+  left: -38px;
+}
+
+.image-grid__two {
+  height: 128px;
+  width: 141px;
+  position: absolute;
+  right: -37px;
+}
+
+.image-grid__three {
+  height: 95px;
+  width: 141px;
+  margin-top: 128px;
+  position: absolute;
+  right: -37px;
+}
+
+.image-grid__four {
+  height: 63px;
+  width: 85px;
+  margin-left: 111px;
+  margin-top: 171px;
+}
+
+.advanced__heading {
+  margin-top: 35px;
+}
+
+.advanced__options-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 76px;
+  margin-top: 20px;
+}
+
+.advanced-option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #707070;
+  font-size: 0.8em;
+}
+
+input[type=checkbox] {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 2.4em;
+  width: 2.4em;
+  background: white;
+  border: 2px solid #707070;
+  border-radius: 100%;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type=checkbox]::before {
+  content: "✔";
+  font-size: 1.2em;
+  right: 0;
+  top: -0.3em;
+  visibility: hidden;
+  color: #707070;
+}
+
+input[type=checkbox]:checked::before {
+  /* Use `visibility` instead of `display` to avoid recalculating layout */
+  visibility: visible;
+}
+
+input[type=checkbox]::-ms-check {
+  display: none;
+}
+
+.details__live-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.live-price__heading {
+  font-size: 1.1em;
+  text-transform: capitalize;
+  color: #2A4F9F;
+  margin-bottom: 0;
+  margin-top: 30px;
+}
+
+.live-price__price {
+  font-weight: 500;
+  font-size: 1.9em;
+  color: #2A4F9F;
+  margin-top: 0;
+}
+
+.live-price__button {
+  width: 145px;
+  padding-left: 0;
+  margin-right: 0;
+}
+
+.live-price-button__icon {
+  height: 30px;
+  width: 30px;
+  background-image: url(../assets/right-arrow.svg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.live-price__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
