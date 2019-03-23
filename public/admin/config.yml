@@ -1,18 +1,54 @@
 backend:
   name: git-gateway
   branch: master
-media_folder: "public/uploads"
-public_folder: "/uploads"
+  accept_roles: 
+    - admin
+    - editor
+
+media_folder: "static/uploads"
+public_folder: "uploads"
+
+publish_mode: editorial_workflow
+
 collections:
-- name: "blog" # Used in routes, e.g., /admin/collections/blog
-  label: "Blog" # Used in the UI
-  folder: "_posts/blog" # The path to the folder where the documents are stored
-  create: true # Allow users to create new documents in this collection
-  slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-  fields: # The fields for each document, usually in front matter
-    - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
-    - {label: "Title", name: "title", widget: "string"}
-    - {label: "Publish Date", name: "date", widget: "datetime"}
-    - {label: "Featured Image", name: "thumbnail", widget: "image"}
-    - {label: "Rating (scale of 1-5)", name: "rating", widget: "number"}
-    - {label: "Body", name: "body", widget: "markdown"}
+  - name: "tours"
+    label: "Tours"
+    folder: "content/tours"
+    create: true
+    slug: "{{title}}"
+    preview_path: "tour/{{title}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Path", name: "path", widget: "string", required: true, default: "/tour/"}
+      - {label: "Featured image", name: "imgone", widget: "image", required: true}
+      - {label: "Starting location", name: "starts", widget: "string", required: true}
+      - {label: "Number of destinations", name: "destinations", widget: "number", min: 1, max: 101, valueType: "int", required: true}
+      - {label: "Ending location", name: "ends", widget: "string", required: true}
+      - {label: "Highlights paragraph", name: "highlights", widget: "string", required: true}
+      - {label: "Highlights image", name: "imgtwo", widget: "image", required: true}
+      - {label: "Age range minimum", name: "minage", widget: "number", required: true, default: 2, valueType: "int"}
+      - {label: "Group size minimum", name: "mingroup", widget: "number", default: 1, valueType: "int", required: true}
+      - {label: "Travel style", name: "travelstyle", widget: "string", required: true, default: "Cultural Discovery"}
+      - {label: "Itinerary image", name: "imgthree", widget: "image", required: true}
+      - { label: "Itinerary PDF Link", name: "itinerary-url", type: "string", required: true, default: "http://www.gracebrunei.com/tours"}
+      - label: "Itinerary" 
+        name: "itinerary"
+        widget: "list"
+        fields: 
+          - {label: Title, name: title, widget: string, default: "Introduction", required: true}
+          - {label: Description, name: desc, widget: string, required: true, default: "A descriptive paragraph goes here"}
+      - label: "What's Included" 
+        name: "included"
+        widget: "list"
+        fields: 
+          - {label: Title, name: title, widget: string, default: "Tour Coordinator", required: true}
+          - {label: Description, name: desc, widget: string, required: true, default: "A descriptive paragraph about tour coordinator goes here"}
+      - label: "Not Included" 
+        name: "not_included"
+        widget: "list"
+        fields: 
+          - {label: Title, name: title, widget: string, default: "Flights", required: true}
+          - {label: Description, name: desc, widget: string, required: true, default: "A descriptive paragraph about how flights are not included goes here"}
+      - { label: "Starting price", name: "price", type: "number", required: true, default: "99"}
+
+
