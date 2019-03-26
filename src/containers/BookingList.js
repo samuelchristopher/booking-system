@@ -1,6 +1,7 @@
 import React from 'react'
 import * as firebase from 'firebase'
 import 'firebase/database'
+import DateList from '../components/dateList'
 
 class BookingList extends React.Component {
   constructor() {
@@ -25,9 +26,17 @@ class BookingList extends React.Component {
   }
 
   render() {
+    let dateLists = {}
+    if (this.state.bookings) {
+      dateLists = Object.keys(this.state.bookings).map((date, key) => {
+        let dateListItems = this.state.bookings[date]
+        return <DateList key={key} dateListItems={dateListItems} date={date}/>
+      })
+    }
     return (
       <div>
-        booking list
+        <h1>booking list</h1>
+        {dateLists ? dateLists : ''}
       </div>
     )
   }
