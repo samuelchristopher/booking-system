@@ -3,7 +3,6 @@ import allTours from "../pages/allTours"
 import * as firebase from "firebase"
 import "firebase/database"
 import AllToursPage from "../pages/allTours"
-import Layout from "../components/layout"
 
 class allToursContainer extends React.Component {
     constructor() {
@@ -23,9 +22,7 @@ class allToursContainer extends React.Component {
 
     render() {
         return (
-            <Layout>
-                <AllToursPage data={this.state.tours} />
-            </Layout>
+            <AllToursPage data={this.state.tours} />
         )
     }
 }
